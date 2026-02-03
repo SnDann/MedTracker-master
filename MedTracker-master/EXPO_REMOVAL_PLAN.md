@@ -1,13 +1,13 @@
 # RFC: Remover Expo do projeto MedTracker
 
 **Resumo:**
-Este documento descreve um plano detalhado para remover o Expo do projeto, migrando para uma base React Native "pura" (bare workflow) e substituindo APIs específicas do Expo por equivalentes de terceiros (por exemplo, `react-native-vision-camera` para câmera, ML Kit para OCR). A remoção será feita em etapas, com PRs pequenos, testes e um plano de rollback.
+Este documento descreve um plano detalhado para remover o Expo do projeto, migrando para uma base React Native "pura" (bare workflow) e substituindo APIs específicas do Expo por equivalentes de terceiros (por exemplo, `react-native-vision-camera` para câmera e uma biblioteca OCR nativa). A remoção será feita em etapas, com PRs pequenos, testes e um plano de rollback.
 
 ---
 
 ## Motivação
 - Remover dependências nativas de alto acoplamento com o Expo para ganhar mais controle sobre builds nativos, reduzir riscos de compatibilidade e permitir integração com bibliotecas nativas de alto desempenho.
-- Facilitar a instrumentação de performance e o uso de bibliotecas nativas como ML Kit e Vision Camera.
+- Facilitar a instrumentação de performance e o uso de bibliotecas nativas para OCR e Vision Camera.
 
 ## Escopo
 - **Incluído:** remover dependências `expo*`, `expo-router`, migrar APIs de câmera, reconhecimento de texto, gerenciamento de assets, e os scripts/configs que dependem do Expo.
@@ -29,7 +29,7 @@ Este documento descreve um plano detalhado para remover o Expo do projeto, migra
 3. **Remover Expo (PRs iterativos)** (variável)
    - PR A: Remover `expo-router` e migrar para `react-navigation` (ou configurar roteamento manual). (isolado)
    - PR B: Substituir `expo-camera` por `react-native-vision-camera` (com instruções de instalação nativa). (isolado)
-   - PR C: Substituir `expo-text-recognition` por ML Kit (via `@react-native-ml-kit/text-recognition`) ou wrapper que chame serviços OCR. (isolado)
+   - PR C: Substituir `expo-text-recognition` por uma biblioteca OCR nativa ou wrapper que chame serviços OCR. (isolado)
    - PR D: Limpar `app.json` / config expo e remover `expo` packages do `package.json`.
 
 4. **Testes e validação** (contínuo)
@@ -44,7 +44,7 @@ Este documento descreve um plano detalhado para remover o Expo do projeto, migra
 - [ ] Implementar wrappers com fallback (lib/camera.ts, lib/ocr.ts, lib/files.ts)
 - [ ] Migrar navegação `expo-router` para `react-navigation`
 - [ ] Substituir `expo-camera` por `react-native-vision-camera` (ou similar)
-- [ ] Substituir `expo-text-recognition` por ML Kit / wrappers nativos
+- [ ] Substituir `expo-text-recognition` por uma biblioteca OCR nativa / wrappers nativos
 - [ ] Atualizar scripts e CI para não depender do `expo` cli
 - [ ] Atualizar documentação e instruções de build
 - [ ] Testar em Android e iOS (simulador & device)

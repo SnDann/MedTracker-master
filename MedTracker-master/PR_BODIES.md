@@ -37,7 +37,7 @@ This draft PR introduces the plan to remove Expo from the project, including a d
 
 **Checklist:**
 - [ ] Confirm scope and non-goals
-- [ ] Agree on alternatives for camera and OCR (e.g., `react-native-vision-camera`, ML Kit wrappers)
+- [ ] Agree on alternatives for camera and OCR (e.g., `react-native-vision-camera`, platform OCR wrappers)
 - [ ] Define CI/workflow requirements for builds (macOS runner for iOS builds, Android SDK for Android)
 - [ ] Approve migration timeline and reviewers
 
