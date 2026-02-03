@@ -1,0 +1,13 @@
+{
+  "name": "medtracker-dev-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "generate-icons": "node generate-icons.js",
+    "create-temp-icon": "node create-temp-icon.js"
+  },
+  "dependencies": {
+    "sharp": "^0.34.2"
+  }
+}
