@@ -135,6 +135,9 @@ medication-manager/
 - Implementamos autenticação via Supabase
 
 ## Contribuição
+
+Consulte `CONTRIBUTING.md` para diretrizes de contribuição — **não são permitidas referências a IA nem emojis em docs/PRs**.
+
 1. Faça um fork do projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
 3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)

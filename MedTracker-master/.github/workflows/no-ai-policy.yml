@@ -1,0 +1,21 @@
+name: 'No-AI Policy Check'
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+  push:
+    branches: [main]
+
+jobs:
+  no_ai_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run no-AI / no-emoji check
+        run: |
+          chmod +x .github/scripts/no-ai-check.sh
+          .github/scripts/no-ai-check.sh
